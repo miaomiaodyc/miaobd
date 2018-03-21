@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoClient=require("mongodb").MongoClient;
-const DB_STR="mongodb://localhost:27017/myblog";
+const DB_STR="mongodb://localhost:27017/dycblog";
 var ObjectId=require("mongodb").ObjectId;
 var router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
       return;
     }
        console.log("连接成功")
-    var db=client.db('myblog');
+    var db=client.db('dycblog');
       var c=db.collection("cats");
       c.find(). toArray(function(err, docs){
         if(err){
@@ -45,7 +45,7 @@ router.get('/add', function(req, res, next) {
 
       //连接成功，db就是myblog数据库
       //获取cats集合
-      var db=client.db('myblog');
+      var db=client.db('dycblog');
         var c=db.collection("cats");
         c.insert({title:title,sort:sort},function(err,result){
           if(err){
@@ -68,7 +68,7 @@ router.get('/add', function(req, res, next) {
         return;
       }
          console.log("连接成功")
-      var db=client.db('myblog');
+      var db=client.db('dycblog');
         var c=db.collection("cats");
         c.find({_id:ObjectId(id)}). toArray(function(err, docs){
           if(err){
@@ -90,7 +90,7 @@ router.get('/add', function(req, res, next) {
         res.send(err);
         return;
       }
-      var db=client.db('myblog');
+      var db=client.db('dycblog');
         var c=db.collection("cats");
      c.update({_id:ObjectId(id)},{$set:{"title":title,"sort":sort}},function(err,result){
 
@@ -110,7 +110,7 @@ router.get('/add', function(req, res, next) {
       console.log(err);
       return;
     }
-    var db=client.db('myblog');
+    var db=client.db('dycblog');
     var c=db.collection("cats");
  c.remove({_id:ObjectId(id)},function(err,result){
 

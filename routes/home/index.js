@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoClient=require("mongodb").MongoClient;
-const DB_STR="mongodb://localhost:27017/myblog";
+const DB_STR="mongodb://localhost:27017/dycblog";
 var router = express.Router();
 
 /* GET home page. */
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     res.send(err);
     return;
   }
-  var db=client.db('myblog');
+  var db=client.db('dycblog');
   var c=db.collection("posts");
 c.find(). toArray( function(err,docs){
 
@@ -19,7 +19,7 @@ c.find(). toArray( function(err,docs){
      res.send(err);
      return;
    }
-   var db=client.db('myblog');
+   var db=client.db('dycblog');
   var c1=db.collection("cats");
   c1.find(). toArray( function(err,result){
     

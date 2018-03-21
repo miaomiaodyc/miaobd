@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoClient=require("mongodb").MongoClient;
-const DB_STR="mongodb://localhost:27017/myblog";
+const DB_STR="mongodb://localhost:27017/dycblog";
 var ObjectId=require("mongodb").ObjectId;
 var router = express.Router();
 
@@ -21,7 +21,7 @@ router.post('/signin',function(req,res){
     res.send(err);
     return;
   }
-  var db=client.db('myblog');
+  var db=client.db('dycblog');
   var c=db.collection("user");
 c.find({username:username,pwd:pwd}). toArray( function(err,docs){
 
